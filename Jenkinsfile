@@ -31,7 +31,7 @@
 pipeline{
     agent any
     environment{
-        staging_server="23.111.182.242"
+        staging_server="103.214.22.75"
     }
     stages{
         stage('Deploy to Remote'){
@@ -40,7 +40,7 @@ pipeline{
                     for fileName in `find ${WORKSPACE} -type f -mmin -10 | grep -v ".git" | grep -v "Jenkinsfile"`
                     do
                         fil=$(echo ${fileName} | sed 's/'"${JOB_NAME}"'/ /' | awk {'print $2'})
-                        scp -r ${WORKSPACE}${fil} thinkwha@${staging_server}:/home/thinkwha/url.thinkwhatnext.click${fil}
+                        scp -r ${WORKSPACE}${fil} root@${staging_server}:/www/wwwroot/jenkins-test.giveawork.com${fil}
                     done
                 '''
             }
