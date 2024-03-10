@@ -6,9 +6,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               bat "rmdir  /s /q test-ci-cd"
                 bat "git clone https://github.com/al-zami-arafat/test-ci-cd.git"
-                bat "mvn clean -f test-ci-cd"
             }
         }
         stage('install') {
